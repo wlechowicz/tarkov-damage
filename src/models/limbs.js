@@ -69,7 +69,7 @@ const Head = {
 const leftArm = { ...Arm, id: 'Left Arm' };
 const rightArm = { ...Arm, id: 'Right Arm' };
 
-const leftLeg = {...Leg, id: 'Left Leg' };
+const leftLeg = { ...Leg, id: 'Left Leg' };
 const rightLeg = { ...Leg, id: 'Right Leg' };
 
 export const limbs = [ leftLeg, rightLeg, leftArm, rightArm, Stomach, Thorax, Head];

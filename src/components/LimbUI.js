@@ -25,20 +25,44 @@ const LimbName = styled.div`
     padding-left: 6px;
 `;
 
-const HpBar = styled.div`
+const HpAmount = styled.div`
+    position: relative;
     border: 2px solid #000;
     color: #fff;
     font-size: 12px;
-    background: linear-gradient(to bottom, #009002, #004501);
+    height: 16px;
     padding: 0;
 `;
 
+const thresholds = [[0, 'darkred'], [25, 'orange'], [50, 'yellow'], [75, 'lime'], [95, '#009002']];
+
+const HpBar = styled.div`
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: ${(props) => thresholds.reduce((result, th) => props.percent > th[0] ? th[1] : result, thresholds[thresholds.length-1])};
+    padding: 0;
+    width: ${(props) => props.percent}%;
+`;
+
+const HpNumber = styled.div`
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+`;
 
 export default function LimbUI({name, hp, hpMax, onDoDamage, position}) {
     return (
     <ActiveArea onClick={onDoDamage} position={position}>
         <LimbName>{name}</LimbName>
-        <HpBar>{hp}/{hpMax}</HpBar>
+        <HpAmount>
+            <HpBar percent={Math.ceil((hp / hpMax) * 100)} />
+            <HpNumber>{hp}/{hpMax}</HpNumber>
+        </HpAmount>
     </ActiveArea>
     );
 }
