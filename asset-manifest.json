@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/tarkov-damage/static/css/main.9f67444c.chunk.css",
-    "main.js": "/tarkov-damage/static/js/main.b8ebc986.chunk.js",
-    "main.js.map": "/tarkov-damage/static/js/main.b8ebc986.chunk.js.map",
+    "main.css": "/tarkov-damage/static/css/main.c197969a.chunk.css",
+    "main.js": "/tarkov-damage/static/js/main.20cae5e9.chunk.js",
+    "main.js.map": "/tarkov-damage/static/js/main.20cae5e9.chunk.js.map",
     "runtime-main.js": "/tarkov-damage/static/js/runtime-main.5f1fdfc8.js",
     "runtime-main.js.map": "/tarkov-damage/static/js/runtime-main.5f1fdfc8.js.map",
     "static/js/2.0e4b0f58.chunk.js": "/tarkov-damage/static/js/2.0e4b0f58.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.8ab7354d.chunk.js": "/tarkov-damage/static/js/3.8ab7354d.chunk.js",
     "static/js/3.8ab7354d.chunk.js.map": "/tarkov-damage/static/js/3.8ab7354d.chunk.js.map",
     "index.html": "/tarkov-damage/index.html",
-    "static/css/main.9f67444c.chunk.css.map": "/tarkov-damage/static/css/main.9f67444c.chunk.css.map",
+    "static/css/main.c197969a.chunk.css.map": "/tarkov-damage/static/css/main.c197969a.chunk.css.map",
     "static/js/2.0e4b0f58.chunk.js.LICENSE.txt": "/tarkov-damage/static/js/2.0e4b0f58.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5f1fdfc8.js",
     "static/js/2.0e4b0f58.chunk.js",
-    "static/css/main.9f67444c.chunk.css",
-    "static/js/main.b8ebc986.chunk.js"
+    "static/css/main.c197969a.chunk.css",
+    "static/js/main.20cae5e9.chunk.js"
   ]
 }
