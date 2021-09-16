@@ -1,3 +1,5 @@
+import { Round2 } from '../utils/round';
+
 const Limb = {
     HP: 1,
     id: 'Limb',
@@ -11,18 +13,19 @@ const Limb = {
 
         // it's already black, full overflow with multi
         if (this.isBlacked()) {
-            return Math.round(amount * this.dmgMulti);
+            return Round2(amount * this.dmgMulti);
+            // return Math.round(amount * this.dmgMulti);
         }
 
         // just apply dmg, won't black it
         if (amount < this.HP) {
-            this.HP = this.HP - amount;
+            this.HP = Round2(this.HP - amount);
             return 0; // no overflow
         }
 
         // this dmg blacked this limb, some overflow
         console.log('\t', this.id, 'got blacked out');
-        const overflow = amount - this.HP;
+        const overflow = Round2(amount - this.HP);
         this.HP = 0;
         return overflow;
     }
@@ -74,8 +77,9 @@ const rightLeg = { ...Leg, id: 'Right Leg' };
 
 export const limbs = [ leftLeg, rightLeg, leftArm, rightArm, Stomach, Thorax, Head];
 
-export function getCurrentHP() {
-    return limbs.reduce((total, limb) => total + limb.HP, 0);
+export function getCurrentHP(showDecimals) {
+    const currentHP = limbs.reduce((total, limb) => total + limb.HP, 0);
+    return showDecimals ? currentHP : Math.round(currentHP);
 }
 
 export function getMaxHP() {

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import LimbUI from './LimbUI.js';
 import { calcState, limbs, isAlive, getMaxHPNotBlacked, getCurrentHP, getMaxHP } from '../models/limbs.js';
 import positions from './positions';
+import { Round2 } from '../utils/round';
 
 const Container = styled.div`
     position: relative;
@@ -24,7 +25,8 @@ const HpCurrent = styled.span`
     color: #9ad323;
 `;
 
-export function Body({ damage }) {
+
+export function Body({ damage, showDecimals }) {
 
     const [limbsHP, setLimbsHP] = useState(calcState());
 
@@ -64,7 +66,8 @@ export function Body({ damage }) {
         // apply dmg limb by limb and accumulate total overflow dmg from all blacked limbs
         const overflow = nonBlackLimbs.reduce((overflow, limb) => {
 
-            const proportionalLimbDamage = Math.round(amount * limb.maxHP / maxHPofNonBlackLimbs);
+            const proportionalLimbDamage = Round2(amount * limb.maxHP / maxHPofNonBlackLimbs);
+            //const proportionalLimbDamage = Math.round(amount * limb.maxHP / maxHPofNonBlackLimbs);
             const limbOverflow = limb.applyDamage(proportionalLimbDamage);
 
             // *** logging only
@@ -110,12 +113,12 @@ export function Body({ damage }) {
                     hpMax={limb.maxHP}
                     onDoDamage={() => doDamage(limb.id, +damage)}
                     position={positions.find(p => p.id === limb.id)}
+                    showDecimals={showDecimals}
                 />)}
-            <HpNumber><HpCurrent>{ getCurrentHP() }</HpCurrent>/{ getMaxHP() }</HpNumber>
+            <HpNumber>
+                <HpCurrent>{ getCurrentHP(showDecimals) }</HpCurrent>/{ getMaxHP() }
+            </HpNumber>
         </Container>
-        <p>
-          
-        </p>
         <p><button onClick={reset}>Reset</button></p>
         </>
     )

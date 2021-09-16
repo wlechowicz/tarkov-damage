@@ -20,3 +20,7 @@
   padding: 20px;
   font-family: "Consolas", sans-serif;
 }
+
+input[type="number"] {
+  width: 5em;
+}

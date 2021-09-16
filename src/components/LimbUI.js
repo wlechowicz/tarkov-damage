@@ -23,6 +23,7 @@ const LimbName = styled.div`
     color: #ddd;
     padding: 2px;
     padding-left: 6px;
+    text-shadow: #000 0px 0px 2px;
 `;
 
 const HpAmount = styled.div`
@@ -52,16 +53,19 @@ const HpNumber = styled.div`
     top: 0;
     bottom: 0;
     right: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+    text-shadow: #000 0px 0px 2px;
+    font-family: Consolas;
+    font-size: 1.1em;
 `;
 
-export default function LimbUI({name, hp, hpMax, onDoDamage, position}) {
+export default function LimbUI({name, hp, hpMax, onDoDamage, position, showDecimals = false}) {
     return (
     <ActiveArea onClick={onDoDamage} position={position}>
         <LimbName>{name}</LimbName>
         <HpAmount>
             <HpBar percent={Math.ceil((hp / hpMax) * 100)} />
-            <HpNumber>{hp}/{hpMax}</HpNumber>
+            <HpNumber>{showDecimals ? hp : Math.round(hp)}/{hpMax}</HpNumber>
         </HpAmount>
     </ActiveArea>
     );
